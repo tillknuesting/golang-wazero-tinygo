@@ -1,14 +1,14 @@
 # golang-wazero-tinygo
 
-This is a proof of concept of a key-value store implemented in Go and compiled to WebAssembly using TinyGo.
-State is stored in a global variable in the wasm module which persistent as long as the host keeps the instance alive.
-Strings are shared between host and wasm module using a shared memory buffer.
+This is a proof of concept of a key-value store implemented in Go and compiled into WebAssembly using TinyGo.
+The state is stored in a global variable in the wasm module, which is persistent as long as the host keeps the instance alive.
+Strings are shared between the host and the wasm module using a shared memory buffer.
 
-There is a set and a get function that are exported and can be called from the host.
+A set and a get function are exported and can be called from the host.
 
-Set takes a keys and values as JSON string and stores the value under the key in a global map.
+The set function takes keys and values as JSON strings and stores the value under the key in a global map.
 
-Get takes a key and returns the value as JSON string.
+The get function takes a key and returns the value as JSON.
 
 ### Versions used:
 tinygo version 0.28.0-dev-e2e6570 darwin/amd64 (using go version go1.20.2 and LLVM version 15.0.0)
