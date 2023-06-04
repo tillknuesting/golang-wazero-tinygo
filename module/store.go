@@ -69,18 +69,6 @@ func get(valuePosition *uint32, length uint32) uint64 {
 	return posSizePairValue
 }
 
-//export add
-func add(valuePosition *uint32, length uint32) uint64 {
-	// read the memory to get the parameter
-	valueBytes := readBufferFromMemory(valuePosition, length)
-
-	// copy the value to memory
-	posSizePairValue := copyBufferToMemory([]byte("return message:" + string(valueBytes)))
-
-	// return the position and size
-	return posSizePairValue
-}
-
 // readBufferFromMemory returns a buffer from WebAssembly
 func readBufferFromMemory(bufferPosition *uint32, length uint32) []byte {
 	subjectBuffer := make([]byte, length)
