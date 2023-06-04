@@ -10,6 +10,8 @@ The set function takes keys and values as JSON strings and stores the value unde
 
 The get function takes a key and returns the value as JSON.
 
+To try it out, run go run host.go and use the provided precompiled wasm file.
+
 ### Versions used:
 tinygo version 0.28.0-dev-e2e6570 darwin/amd64 (using go version go1.20.2 and LLVM version 15.0.0)
 
