@@ -32,7 +32,7 @@ func set(valuePosition *uint32, length uint32) uint64 {
 		for key, value := range data {
 			kvs.data[key] = value
 		}
-		returnValue = []byte(fmt.Sprintf("success"))
+		returnValue = []byte("success")
 	}
 
 	posSizePairValue := copyBufferToMemory(returnValue)
