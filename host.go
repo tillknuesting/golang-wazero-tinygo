@@ -25,7 +25,7 @@ func main() {
 	wasi_snapshot_preview1.MustInstantiate(ctx, runtime)
 
 	// Load the WebAssembly module
-	wasmPath := "./testdata/add.wasm"
+	wasmPath := "./module/store.wasm"
 	helloWasm, err := os.ReadFile(wasmPath)
 
 	if err != nil {
@@ -44,20 +44,23 @@ func main() {
 	setFunction := mod.ExportedFunction("set")
 	getFunction := mod.ExportedFunction("get")
 
-	// Function parameter
+	// state is stored for each wasm instance in a global variable that lives as long as the wasm instance
+
+	// Call the WebAssembly functions
 	stringData := `{"key1": "value1", "key2": "value2"}`
+	log.Println("Setting the value: ", stringData)
 	functionCallhelper(stringData, mod, err, ctx, setFunction)
 
-	// Function parameter
 	stringData2 := "key1"
+	log.Println("Getting the value for key: ", stringData2)
 	functionCallhelper(stringData2, mod, err, ctx, getFunction)
 
-	// Function parameter
 	stringData3 := `{"key1": "value1updated"}`
+	log.Println("Updating the value: ", stringData3)
 	functionCallhelper(stringData3, mod, err, ctx, setFunction)
 
-	// Function parameter
-	stringData4 := "key2"
+	stringData4 := "key1"
+	log.Println("Getting the value for key: ", stringData4)
 	functionCallhelper(stringData4, mod, err, ctx, getFunction)
 }
 
